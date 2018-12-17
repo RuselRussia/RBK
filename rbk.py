@@ -30,7 +30,7 @@ def get_all_links(html):
 def data_write(data):
     with open('rbk.csv', 'a', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(('\nЗаголовок', data['title'], '\nСсылка', data['link'], '\nНовость', data['content'], '\nДата',
+        writer.writerow((data['title'], data['link'], data['content'],
                          data['date']))
 
 
@@ -43,7 +43,6 @@ def get_data_main(html, link):
                                                                            class_='article__header__date').text.strip()
     data = {'title': title, 'link': link, 'content': content, 'date': date}
     return data
-
 
 def main():
     url = 'https://www.rbc.ru/'
